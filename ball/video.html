@@ -24,6 +24,7 @@
             z-index: 100;
             background: #000;
             display: none;
+             cursor:pointer;
          }
          .x{
             font-size: .3rem;
@@ -42,6 +43,7 @@
          }
          ul li{
           padding: .3rem 0.05rem;
+           cursor:pointer;
          }
          .pl_list{
             position: absolute;
@@ -52,6 +54,8 @@
             padding: .1rem;
             border-radius: 0.08rem 0.08rem 0 0 ;
             transition:transform 1s ease-in-out 1s;
+            z-index: 200;
+             cursor:pointer;
          }
          .pl_h{
            transform: translateY(-2.2rem);
@@ -63,6 +67,16 @@
             padding: .1rem;
 
          }
+           .cover{
+                 background-color: #fff;
+                 position: fixed;
+                 top: 0;
+                opacity: 0.5;
+                width: 100%;
+                height: 100%;
+                display: none;
+                 cursor:pointer;
+            }
         </style> 
     </head>
     <body>
@@ -71,40 +85,41 @@
      </header>
 
       
-      <div class='video' style='cursor:pointer;'>
-           <div class="x" style='cursor:pointer;'>x</div>
+      <div class='video'>
+           <div class="x">x</div>
            <div class="title">UI设计--苹果和安卓APP界面尺寸规范</div>
            <video width="100%" height="100%" autoplay controls webkit-playsinline playsinline>
              <source src="http://lz.jokme.com/39e942f7f20d5431a44673b87c5c93fc60e80f63.mp4" type="video/mp4">
            </video>
            
            <ul>
-             <li class="z" style='cursor:pointer;'>
+             <li class="z">
                <img src="images/z.png">
              </li>
-             <li class="pl" style='cursor:pointer;'>
+             <li class="pl">
                <img src="images/pl.png">
              </li>
-             <li class="fx" style='cursor:pointer;'>
+             <li class="fx">
                <img src="images/fx.png">
              </li>
            </ul>
 
-           <div class="pl_list" style='cursor:pointer;'>
+           <div class="pl_list">
               <div>噼里啪啦噼里啪啦</div>
               <div>噼里啪啦噼里啪啦</div>
               <div>噼里啪啦噼里啪啦</div>
               <div>噼里啪啦噼里啪啦</div>
            </div>
+           <div class="cover"></div>
       </div>
        
     </body>
     
 </html>
 
-<script src="js/zepto.js"></script>
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript">
-  $('.img').click(function(){
+  $('header>img').click(function(){
       $('.video').show();
   })
   $('.x').click(function(){
@@ -112,22 +127,26 @@
   })
      var  a=true
   $('.pl').click(function(){
-         
-    
          console.log(a)
          if (a) {
             a=false
             $('.pl_list').addClass('pl_h')
-            
+            $('.cover').show();
             console.log(a)
          }else{
             console.log(11000)
             $('.pl_list').removeClass('pl_h')
             a=true
+            $('.cover').hide();
          }
          
   })
- 
+   $('.cover').click(function(){
+         $('.pl_list').removeClass('pl_h')
+          a=true  
+         $('.cover').hide();   
+  })
+
    var b=true;
   $('.z').click(function(){
     if(b){
